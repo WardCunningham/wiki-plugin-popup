@@ -26,14 +26,16 @@ bind = ($item, item) ->
   $item.find('button.popup').click ->
     popup = window.open('https://livecode.world/graphs/graph.html','_blank');
     console.log 'popup',popup
-    receiveMessage = (event) ->
-      console.log 'recieve', event
-      $item.append $ "<p>#{expand event.data}</p>"
-    window.addEventListener("message", receiveMessage, false);
 
   $item.find('button.message').click ->
     console.log 'message', popup
     popup.postMessage("hello there!", "*");
+
+  receiveMessage = (event) ->
+    console.log 'recieve', event
+    $item.append $ "<p>#{expand event.data}</p>"
+
+  window.addEventListener("message", receiveMessage, false);
 
 
 window.plugins.popup = {emit, bind} if window?
