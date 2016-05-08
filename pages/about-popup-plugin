@@ -1,0 +1,37 @@
+{
+  "title": "About Popup Plugin",
+  "story": [
+  {
+    "type": "paragraph",
+    "id": "e5c8e11df573f497",
+    "text": "Here we describe the purpose of the plugin and include a sample."
+  },
+  {
+    "type": "popup",
+    "id": "4460e02ed6bd48af",
+    "text": "This is text in the new plugin. You can *double-click* to edit it too."
+  }
+],
+  "journal": [
+  {
+    "type": "create",
+    "item": {
+      "title": "About Popup Plugin",
+      "story": [
+  {
+    "type": "paragraph",
+    "id": "e5c8e11df573f497",
+    "text": "Here we describe the purpose of the plugin and include a sample."
+  },
+  {
+    "type": "popup",
+    "id": "4460e02ed6bd48af",
+    "text": "This is text in the new plugin. You can *double-click* to edit it too."
+  }
+]
+    },
+    "date": 1462726792000,
+    "certificate": "from mkplugin.sh"
+  }
+]
+}
