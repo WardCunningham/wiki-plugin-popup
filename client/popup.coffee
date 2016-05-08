@@ -20,19 +20,23 @@ emit = ($item, item) ->
 
 bind = ($item, item) ->
   popup = null
+  opener = null
+
+  console.log 'window.opener', window.opener
 
   $item.dblclick -> wiki.textEditor $item, item
 
   $item.find('button.popup').click ->
-    popup = window.open('https://livecode.world/graphs/graph.html','_blank');
+    popup = window.open('http://localhost:3000/view/testing-popup-plugin','_blank');
     console.log 'popup',popup
 
   $item.find('button.message').click ->
     console.log 'message', popup
-    popup.postMessage("hello there!", "*");
+    (popup || opener)?.postMessage("hello there!", "*");
 
   receiveMessage = (event) ->
     console.log 'recieve', event
+    opener = event.source unless popup
     $item.append $ "<p>#{expand event.data}</p>"
 
   window.addEventListener("message", receiveMessage, false);
