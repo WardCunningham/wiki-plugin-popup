@@ -14,7 +14,6 @@ emit = ($item, item) ->
     <p style="background-color:#eee;padding:15px;">
       #{expand item.text}
       <button class=popup>Popup</button>
-      <button class=message>Message</button>
     </p>
   """
 
@@ -26,18 +25,44 @@ bind = ($item, item) ->
 
   $item.dblclick -> wiki.textEditor $item, item
 
+  send = {}
+  rcve = {}
+
+  doit = (doit, func) ->
+    send[doit] = func.send
+    rcve[doit] = func.rcve
+    $item.find('button:last').after "<button class=doit>#{doit}</button>"
+
+  doit 'world',
+    send: -> 'everyone'
+    rcve: -> $item.append "<p>hello world</p>"
+
+  doit 'append-last',
+    send: -> $('.page:last').attr('id')
+    rcve: (data) -> wiki.doInternalLink data
+
+  doit 'replace-last',
+    send: -> $('.page:last').attr('id')
+    rcve: (data) -> wiki.doInternalLink data, $item.parents('.page')
+
+  $item.find('button.doit').click (e) ->
+    doit = $(e.target).text()
+    data = {type:'doit', doit, data:send[doit]()}
+    console.log 'doit', data
+    (popup || opener)?.postMessage(JSON.stringify(data), "*");
+
   $item.find('button.popup').click ->
     popup = window.open('http://localhost:3000/view/testing-popup-plugin','_blank');
     console.log 'popup',popup
 
-  $item.find('button.message').click ->
-    console.log 'message', popup
-    (popup || opener)?.postMessage("hello there!", "*");
-
   receiveMessage = (event) ->
-    console.log 'recieve', event
     opener = event.source unless popup
-    $item.append $ "<p>#{expand event.data}</p>"
+    data = JSON.parse event.data
+    console.log 'data', data
+    if data.type == 'doit'
+      rcve[data.doit](data.data)
+    else
+      $item.append $ "<p>#{expand event.data}</p>"
 
   window.addEventListener("message", receiveMessage, false);
 
