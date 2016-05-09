@@ -1,37 +1,88 @@
 {
   "title": "About Popup Plugin",
   "story": [
-  {
-    "type": "paragraph",
-    "id": "e5c8e11df573f497",
-    "text": "Here we describe the purpose of the plugin and include a sample."
-  },
-  {
-    "type": "popup",
-    "id": "4460e02ed6bd48af",
-    "text": "This is text in the new plugin. You can *double-click* to edit it too."
-  }
-],
-  "journal": [
-  {
-    "type": "create",
-    "item": {
-      "title": "About Popup Plugin",
-      "story": [
-  {
-    "type": "paragraph",
-    "id": "e5c8e11df573f497",
-    "text": "Here we describe the purpose of the plugin and include a sample."
-  },
-  {
-    "type": "popup",
-    "id": "4460e02ed6bd48af",
-    "text": "This is text in the new plugin. You can *double-click* to edit it too."
-  }
-]
+    {
+      "type": "paragraph",
+      "id": "e5c8e11df573f497",
+      "text": "Here we experiment with window to window messaging in order to control from and/or to federated wiki lineups."
     },
-    "date": 1462726792000,
-    "certificate": "from mkplugin.sh"
-  }
-]
+    {
+      "type": "popup",
+      "id": "4460e02ed6bd48af",
+      "text": "First popup another window then use remaining buttons to signal to and from it."
+    },
+    {
+      "type": "reference",
+      "id": "d419bee44d2074d2",
+      "site": "ward.asia.wiki.org",
+      "slug": "coordinated-viewing",
+      "title": "Coordinated Viewing",
+      "text": "We consider what we have and what we might want for coordinating between independent applications."
+    }
+  ],
+  "journal": [
+    {
+      "type": "create",
+      "item": {
+        "title": "About Popup Plugin",
+        "story": [
+          {
+            "type": "paragraph",
+            "id": "e5c8e11df573f497",
+            "text": "Here we describe the purpose of the plugin and include a sample."
+          },
+          {
+            "type": "popup",
+            "id": "4460e02ed6bd48af",
+            "text": "This is text in the new plugin. You can *double-click* to edit it too."
+          }
+        ]
+      },
+      "date": 1462726792000,
+      "certificate": "from mkplugin.sh"
+    },
+    {
+      "type": "edit",
+      "id": "e5c8e11df573f497",
+      "item": {
+        "type": "paragraph",
+        "id": "e5c8e11df573f497",
+        "text": "Here we experiment with window to window messaging in order to control from and/or to federated wiki lineups."
+      },
+      "date": 1462754031798
+    },
+    {
+      "type": "edit",
+      "id": "4460e02ed6bd48af",
+      "item": {
+        "type": "popup",
+        "id": "4460e02ed6bd48af",
+        "text": "First popup another window then use remaining buttons to signal to and from it."
+      },
+      "date": 1462754114282
+    },
+    {
+      "item": {
+        "type": "factory",
+        "id": "d419bee44d2074d2"
+      },
+      "id": "d419bee44d2074d2",
+      "type": "add",
+      "after": "4460e02ed6bd48af",
+      "date": 1462754325573
+    },
+    {
+      "type": "edit",
+      "id": "d419bee44d2074d2",
+      "item": {
+        "type": "reference",
+        "id": "d419bee44d2074d2",
+        "site": "ward.asia.wiki.org",
+        "slug": "coordinated-viewing",
+        "title": "Coordinated Viewing",
+        "text": "We consider what we have and what we might want for coordinating between independent applications."
+      },
+      "date": 1462754333855
+    }
+  ]
 }

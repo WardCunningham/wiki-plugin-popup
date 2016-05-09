@@ -13,7 +13,7 @@ emit = ($item, item) ->
   $item.append """
     <p style="background-color:#eee;padding:15px;">
       #{expand item.text}
-      <button class=popup>Popup</button>
+      <button class=popup>popup</button>
     </p>
   """
 
@@ -31,7 +31,7 @@ bind = ($item, item) ->
   doit = (doit, func) ->
     send[doit] = func.send
     rcve[doit] = func.rcve
-    $item.find('button:last').after "<button class=doit>#{doit}</button>"
+    $item.find('button:last').after " <button class=doit>#{doit}</button> "
 
   doit 'world',
     send: -> 'everyone'
@@ -52,7 +52,7 @@ bind = ($item, item) ->
     (popup || opener)?.postMessage(JSON.stringify(data), "*");
 
   $item.find('button.popup').click ->
-    popup = window.open('http://localhost:3000/view/testing-popup-plugin','_blank');
+    popup = window.open("http://#{location.host}/view/about-popup-plugin",'_blank');
     console.log 'popup',popup
 
   receiveMessage = (event) ->
